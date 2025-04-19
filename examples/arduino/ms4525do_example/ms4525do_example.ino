@@ -6,16 +6,20 @@
 bfs::Ms4525do pres;
 
 float velocity()
-{ // Read and Convert Velocity for pressure(pascal)
-
-  float read_press;           // in Read.press
-  float conv_press;           // in converted press
+{
+  // Read and Convert Velocity for pressure(pascal)
+  float read_press;            // read press
+  float conv_press;            // converted press
   float low_p_filter = 0.0005; // low cat filter factor
-  float high_p_filter1 = 0.1; // high filter factor
-  float high_p_filter2 = 4;   // high filter factor
-  float dose_point = 58;      // cat point
-  float air = 1.15;           // air Density
-  float velo;                 // result velosity
+  float high_p_filter1 = 0.1;  // high filter factor
+  float high_p_filter2 = 4;    // high filter factor
+  float dose_point = 58;       // cat point
+  float air = 1.15;            // air Density
+  float velo;                  // result velosity
+
+  // If you want to use the Sensor temperature, you can use below
+  // float temp = pres.temp_c(); // temperature in celsius
+  // air = 1.15 - (0.00367 * temp); // air density in kg/m^3
 
   read_press = abs(pres.pres_pa());
 
@@ -41,7 +45,7 @@ void setup()
   {
   }
   Wire.begin();
-  //Wire.setClock(400000);
+  // Wire.setClock(400000);
   /*
    * I2C address of 0x28, on bus 0, with a -1 to +1 PSI range
    */
